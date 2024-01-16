@@ -1,6 +1,4 @@
-from project import ler_sensor_humidade, ler_sensor_mosca, ler_sensor_temperatura, notificar_mosca, contar_moscas_por_armadilha
-from project import adicionar_armadilha, mostrar_detalhes_armadilhas, mostrar_numero_armadilhas, alterar_nome_armadilha
-from project import apagar_armadilha, avaliar_risco_presenca_mosca
+from project import ler_sensor_humidade, ler_sensor_mosca, ler_sensor_temperatura
 
 
 def test_ler_sensor_mosca_esta_dentro_do_intervalo():
