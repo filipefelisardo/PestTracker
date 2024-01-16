@@ -25,5 +25,5 @@ def test_notificar_mosca_output_formato_correto():
         f"Foi detectada a presença de {contagem_moscas} moscas da azeitona na armadilha '{nome_armadilha}' nas coordenadas {coordenadas}.\n"
         f"Condições ambientais - Temperatura: {temperatura}°C, Humidade: {humidade}%.\n"
     )
-
+#j
 
