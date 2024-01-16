@@ -13,7 +13,6 @@ def test_ler_sensor_humidade_esta_dentro_do_intervalo():
     resultado = ler_sensor_humidade()
     assert 30 <= resultado <= 80
 
-
 def notificar_mosca(contagem_moscas, nome_armadilha, coordenadas, temperatura, humidade):
     print(f"Foi detectada a presença de {contagem_moscas} moscas da azeitona na armadilha '{nome_armadilha}' nas coordenadas {coordenadas}.")
     print(f"Condições ambientais - Temperatura: {temperatura}°C, Humidade: {humidade}%.")
