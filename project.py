@@ -50,8 +50,8 @@ cursor = conn.cursor()
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS armadilhas (
         nome TEXT PRIMARY KEY,
-        coordenada_x REAL,
-        coordenada_y REAL
+        latitude,
+        longitude
     )
 ''')
 conn.commit()
@@ -65,7 +65,7 @@ def ler_sensor_temperatura():
     return random.randint(15, 30)  # Simula a leitura de temperatura em graus Celsius
 
 def ler_sensor_humidade():
-    return random.randint(30, 80)  # Simula a leitura de umidade do solo em porcentagem
+    return random.randint(30, 80)  # Simula a leitura de humidade do solo em porcentagem
 
 # Função que notifica sobre a presença de moscas e condições ambientais
 def notificar_mosca(contagem_moscas, nome_armadilha, coordenadas, temperatura, humidade):
@@ -74,26 +74,26 @@ def notificar_mosca(contagem_moscas, nome_armadilha, coordenadas, temperatura, h
 
 # Função para contar o número de moscas por armadilha e quais as condições ambientais
 def contar_moscas_por_armadilha():
-    cursor.execute('SELECT nome, coordenada_x, coordenada_y FROM armadilhas')
+    cursor.execute('SELECT nome, latitude, longitude FROM armadilhas')
     armadilhas = cursor.fetchall()
     if not armadilhas:
         print("Nenhuma armadilha registada.")
     else:
-        for nome, coordenada_x, coordenada_y in armadilhas:
+        for nome, latitude, longitude in armadilhas:
             contagem = ler_sensor_mosca()
             temperatura = ler_sensor_temperatura()
             humidade = ler_sensor_humidade()
-            notificar_mosca(contagem, nome, (coordenada_x, coordenada_y), temperatura, humidade)
+            notificar_mosca(contagem, nome, (latitude, longitude), temperatura, humidade)
 
 # Função para adicionar armadilha
 def adicionar_armadilha():
     try:
         nome = input("Qual o nome da nova armadilha: ")
-        coordenada_x = float(input("Digite a coordenada X da nova armadilha: "))
-        coordenada_y = float(input("Digite a coordenada Y da nova armadilha: "))
+        latitude = float(input("Digite a latitude da nova armadilha: "))
+        longitude = float(input("Digite a longitude Y da nova armadilha: "))
 
         # Inserir dados no banco de dados
-        cursor.execute('INSERT INTO armadilhas VALUES (?, ?, ?)', (nome, coordenada_x, coordenada_y))
+        cursor.execute('INSERT INTO armadilhas VALUES (?, ?, ?)', (nome, latitude, longitude))
         conn.commit()
 
         print("Armadilha adicionada com sucesso!")
@@ -102,14 +102,14 @@ def adicionar_armadilha():
 
 # Função para mostrar detalhes das armadilhas
 def mostrar_detalhes_armadilhas():
-    cursor.execute('SELECT nome, coordenada_x, coordenada_y FROM armadilhas')
+    cursor.execute('SELECT nome, latitude, longitude FROM armadilhas')
     armadilhas = cursor.fetchall()
     if not armadilhas:
         print("Nenhuma armadilha registada.")
     else:
         print("Detalhes das armadilhas:")
-        for nome, coordenada_x, coordenada_y in armadilhas:
-            print(f"Nome: {nome}, Coordenadas: ({coordenada_x}, {coordenada_y})")
+        for nome, latitude, longitude in armadilhas:
+            print(f"Nome: {nome}, Coordenadas: ({latitude}, {longitude})")
 
 # Função para mostrar o número de armadilhas
 def mostrar_numero_armadilhas():
@@ -119,7 +119,7 @@ def mostrar_numero_armadilhas():
 
 # Função para alterar o nome da armadilha
 def alterar_nome_armadilha():
-    nome_atual = input("Qual o nome da armadilha que deseja alterar: ")
+    nome_atual = input("Qual o nome da armadilha que pretende alterar: ")
     novo_nome = input("Qual o novo nome para a armadilha: ")
 
     cursor.execute('UPDATE armadilhas SET nome = ? WHERE nome = ?', (novo_nome, nome_atual))
@@ -128,7 +128,7 @@ def alterar_nome_armadilha():
 
 # Função para apagar uma armadilha
 def apagar_armadilha():
-    nome_apagar = input("Qual o nome da armadilha que deseja apagar: ")
+    nome_apagar = input("Qual o nome da armadilha que pretende apagar: ")
 
     cursor.execute('DELETE FROM armadilhas WHERE nome = ?', (nome_apagar,))
     conn.commit()
@@ -136,14 +136,14 @@ def apagar_armadilha():
     
 # Função para avaliar o risco de presença da mosca da azeitona em todas as armadilhas
 def avaliar_risco_presenca_mosca():
-    cursor.execute('SELECT nome, coordenada_x, coordenada_y FROM armadilhas')
+    cursor.execute('SELECT nome, latitude, longitude FROM armadilhas')
     armadilhas = cursor.fetchall()
     
     if not armadilhas:
         print("Nenhuma armadilha registada.")
     else:
         print("Avaliação de risco de presença da mosca da azeitona:")
-        for nome, coordenada_x, coordenada_y in armadilhas:
+        for nome, latitude, coordenada_y in armadilhas:
             contagem = ler_sensor_mosca()
             
             # Defina seus critérios de avaliação de risco com base na contagem de moscas
