@@ -1,8 +1,8 @@
 # Obejtivo do projeto 
-### O projeto Pest Tracker tem como objetivo simular uma aplicação para a previsão da praga da mosca da azeitona no olival. A aplicação tem como objetivo alertar os agricultores sobre o risco da praga, utilizando dados simulados. A escolha desse projeto foi motivada pelo trabalho teórico e descritivo desenvolvido na disciplina "Fundamentos da Ciência de Dados Agro-Ambientais". Aqui, criamos uma aplicação prática com dados simulados.
+O projeto Pest Tracker tem como objetivo simular uma aplicação para a previsão da praga da mosca da azeitona no olival. A aplicação tem como objetivo alertar os agricultores sobre o risco da praga, utilizando dados simulados. A escolha desse projeto foi motivada pelo trabalho teórico e descritivo desenvolvido na disciplina "Fundamentos da Ciência de Dados Agro-Ambientais". Aqui, criamos uma aplicação prática com dados simulados.
 
 # Banco de dados 
-### O sistema utiliza um banco de dados o SQLite 3 chamado armadilhas.db para armazenar informações sobre as armadilhas, incluindo nome, coordenada X e coordenada Y, garantindo que as informações das armadilhas e coordenadas sejam mantidas a cada execução do programa.
+O sistema utiliza um banco de dados o SQLite 3 chamado armadilhas.db para armazenar informações sobre as armadilhas, incluindo nome, coordenada X e coordenada Y, garantindo que as informações das armadilhas e coordenadas sejam mantidas a cada execução do programa.
 
 
 
