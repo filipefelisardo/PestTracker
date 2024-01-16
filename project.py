@@ -50,8 +50,8 @@ cursor = conn.cursor()
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS armadilhas (
         nome TEXT PRIMARY KEY,
-        latitude,
-        longitude
+        latitude Real,
+        longitude Real
     )
 ''')
 conn.commit()
