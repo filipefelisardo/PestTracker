@@ -1,4 +1,5 @@
 pip install random
 pip matplotlib.pyplot 
 pip  numpy 
+pip install pytest
 
