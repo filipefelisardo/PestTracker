@@ -4,7 +4,7 @@ import numpy as np
 import sqlite3
 
 def main():
-    # Código do banco de dados e funções aqui...
+    # Código do banco de dados 
 
     while True:
         print("Pest Tracker")
@@ -36,17 +36,17 @@ def main():
             apagar_armadilha()
         elif opcao == '7':
             print("Programa encerrado.")
-            # Fechar conexão com o banco de dados antes de sair
+            # Fecha conexão com o banco de dados antes de sair
             conn.close()
             break
         else:
             print("Opção inválida. Tente novamente.")
 
-# Conectar ao banco de dados (será criado se não existir)
+# Conecta ao banco de dados (será criado se não existir)
 conn = sqlite3.connect('armadilhas.db')
 cursor = conn.cursor()
 
-# Criar tabela se não existir
+# Cria tabela se não existir
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS armadilhas (
         nome TEXT PRIMARY KEY,
@@ -58,14 +58,14 @@ conn.commit()
 
 # Função que simula leituras de uma armadilha inteligente
 def ler_sensor_mosca():
-    return random.randint(0, 5)  # Simula a contagem de moscas da azeitona
+    return random.randint(0, 10)  # Simula a contagem do numero de moscas da azeitona, entre 0 e 10 
 
 # Função que simula leituras de sensores ambientais
 def ler_sensor_temperatura():
-    return random.randint(15, 30)  # Simula a leitura de temperatura em graus Celsius
+    return random.randint(15, 30)  # Simula a leitura de temperatura em graus Celsius, entre os 15 e os 30
 
 def ler_sensor_humidade():
-    return random.randint(30, 80)  # Simula a leitura de humidade do solo em porcentagem
+    return random.randint(20, 80)  # Simula a leitura de humidade do solo em percentagem, entre os 20 e os 80 
 
 # Função que notifica sobre a presença de moscas e condições ambientais
 def notificar_mosca(contagem_moscas, nome_armadilha, coordenadas, temperatura, humidade):
@@ -85,14 +85,14 @@ def contar_moscas_por_armadilha():
             humidade = ler_sensor_humidade()
             notificar_mosca(contagem, nome, (latitude, longitude), temperatura, humidade)
 
-# Função para adicionar armadilha
+# Função para adicionar uma nova armadilha
 def adicionar_armadilha():
     try:
         nome = input("Qual o nome da nova armadilha: ")
         latitude = float(input("Digite a latitude da nova armadilha: "))
-        longitude = float(input("Digite a longitude Y da nova armadilha: "))
+        longitude = float(input("Digite a longitude da nova armadilha: "))
 
-        # Inserir dados no banco de dados
+        # Insere dados no banco de dados
         cursor.execute('INSERT INTO armadilhas VALUES (?, ?, ?)', (nome, latitude, longitude))
         conn.commit()
 
@@ -100,7 +100,7 @@ def adicionar_armadilha():
     except ValueError:
         print("Por favor, insira coordenadas válidas (números).")
 
-# Função para mostrar detalhes das armadilhas
+# Função para mostrar informações das armadilhas
 def mostrar_detalhes_armadilhas():
     cursor.execute('SELECT nome, latitude, longitude FROM armadilhas')
     armadilhas = cursor.fetchall()
