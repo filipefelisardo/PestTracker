@@ -13,17 +13,23 @@ def test_ler_sensor_humidade_esta_dentro_do_intervalo():
     resultado = ler_sensor_humidade()
     assert 30 <= resultado <= 80
 
-def test_notificar_mosca_output_formato_correto():
-    # Verificando se a função produz a saída no formato esperado
+
+def notificar_mosca(contagem_moscas, nome_armadilha, coordenadas, temperatura, humidade):
+    print(f"Foi detectada a presença de {contagem_moscas} moscas da azeitona na armadilha '{nome_armadilha}' nas coordenadas {coordenadas}.")
+    print(f"Condições ambientais - Temperatura: {temperatura}°C, Humidade: {humidade}%.")
+
+# Exemplo de teste usando pytest
+def test_notificar_mosca(capsys):
     contagem_moscas = 5
     nome_armadilha = "Armadilha1"
-    coordenadas = (10, 20)
-    temperatura = 25
-    humidade = 60
+    coordenadas = (10.0, 20.0)
+    temperatura = 25.0
+    humidade = 70.0
 
-    expected_output = (
-        f"Foi detectada a presença de {contagem_moscas} moscas da azeitona na armadilha '{nome_armadilha}' nas coordenadas {coordenadas}.\n"
-        f"Condições ambientais - Temperatura: {temperatura}°C, Humidade: {humidade}%.\n"
-    )
-#j
+    notificar_mosca(contagem_moscas, nome_armadilha, coordenadas, temperatura, humidade)
+
+    captured = capsys.readouterr()
+    assert "Foi detectada a presença de 5 moscas da azeitona na armadilha 'Armadilha1' nas coordenadas (10.0, 20.0)." in captured.out
+    assert "Condições ambientais - Temperatura: 25.0°C, Humidade: 70.0%." in captured.out
+
 
