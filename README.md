@@ -5,7 +5,6 @@
 - O sistema utiliza um banco de dados o SQLite 3 chamado armadilhas.db para armazenar informações sobre as armadilhas. Essas informações incluem o nome da armadilha, latitude e longitude, garantindo que as informações das armadilhas e coordenadas sejam mantidas a cada execução do programa.
 
 # Funcionalidades da aplicação 
-- O nome da aplicação a desenvolver será o pest tracker, que conta com 7 opções:
 
 - Na "opção 1" (Número de moscas por armadilha) permite adicionar mais armadilhas, e adicionamos um nome á armadilha juntamente com as coordenadas geográficas (latitude e longitude)
 
@@ -17,18 +16,23 @@
 
 - Na "opção 5" (Alterar nome da armadilha) permite alterar o nome das armadilhas, inicialmente escrevemos o nome da armadilha que queremos alterar e depois o novo nome que pretendemos para essa armadilha 
 
-- - Na "opção 6" (Apagar armadilha) permite apagar as armadilhas que pretendermos 
+- Na "opção 6" (Apagar armadilha) permite apagar as armadilhas que pretendermos 
 
 Na "opção 7" (Terminar o programa) serve para terminar o programa 
 
 
 # Explicação das funções criadas
 
-- Adicionar Armadilha (adicionar_armadilha):
-Solicita e registra um nome para uma nova armadilha, juntamente com as coordenadas geográficas (latitude e longitude).
+-  **ler_sensor_mosca()** - Simula a contagem do numero de moscas da azeitona, entre 0 e 10 
+
+- *ler_sensor_temperatura()* - Simula a leitura de temperatura em graus Celsius, entre os 15 e os 30
+
+- ler_sensor_humidade()- Simula a leitura de humidade do solo em percentagem, entre os 20 e os 80 
+
+- adicionar_armadilha() - Solicita e registra um nome para uma nova armadilha, juntamente com as coordenadas geográficas (latitude e longitude).
 Insere os dados no banco de dados SQLite.
 
-- Número de Moscas por Armadilha (contar_moscas_por_armadilha):
+- contar_moscas_por_armadilha() - 
 Lê o número simulado de moscas da azeitona, temperatura e humidade para cada armadilha registada.
 Notifica sobre a presença de moscas e mostra as condições ambientais.
 
