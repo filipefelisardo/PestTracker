@@ -18,7 +18,7 @@
 
 - Na "opção 6" (Apagar armadilha) permite apagar as armadilhas que pretendermos 
 
-Na "opção 7" (Terminar o programa) serve para terminar o programa 
+- Na "opção 7" (Terminar o programa) serve para terminar o programa 
 
 
 # Explicação das funções criadas
