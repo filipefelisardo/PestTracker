@@ -60,7 +60,7 @@ conn.commit()
 def ler_sensor_mosca():
     return random.randint(0, 10)  # Simula a contagem do numero de moscas da azeitona, entre 0 e 10 
 
-# Função que simula leituras de sensores ambientais
+# Funções que simulam leituras de sensores ambientais
 def ler_sensor_temperatura():
     return random.randint(15, 30)  # Simula a leitura de temperatura em graus Celsius, entre os 15 e os 30
 
@@ -111,12 +111,6 @@ def mostrar_detalhes_armadilhas():
         for nome, latitude, longitude in armadilhas:
             print(f"Nome: {nome}, Coordenadas: ({latitude}, {longitude})")
 
-# Função para mostrar o número de armadilhas
-def mostrar_numero_armadilhas():
-    cursor.execute('SELECT COUNT(*) FROM armadilhas')
-    numero_armadilhas = cursor.fetchone()[0]
-    print(f"Número de armadilhas registadas: {numero_armadilhas}")
-
 # Função para alterar o nome da armadilha
 def alterar_nome_armadilha():
     nome_atual = input("Qual o nome da armadilha que pretende alterar: ")
@@ -157,6 +151,5 @@ def avaliar_risco_presenca_mosca():
 if __name__ == "__main__":
     main()
 
-#teste
     
 

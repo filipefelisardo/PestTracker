@@ -47,10 +47,10 @@ Solicita e regista um nome para uma nova armadilha, juntamente com as coordenada
 
 - **mostrar_detalhes_armadilhas()**  
 Nesta função é utilizado cursor.execute para executar uma consulta em  SQL que seleciona o nome, a latitude e a longitude de todas as armadilhas na tabela armadilhas.
-Em seguida, utiliza-se cursor.fetchall() para recuperar todas as linhas resultantes da consulta, se não houver armadilhas registadas, a função imprime uma mensagem indicando que nenhuma armadilha está registrada. Caso contrário, a função imprime os detalhes de cada armadilha no formato "Nome: [nome], Coordenadas: ([latitude], [longitude])"
+Em seguida, utiliza-se cursor.fetchall() para recuperar todas as linhas resultantes da consulta, se não houver armadilhas registadas, a função mostra uma mensagem indicando que nenhuma armadilha está registrada. Caso contrário, a função mostra os detalhes de cada armadilha no formato "Nome: [nome], Coordenadas: ([latitude], [longitude])"
 
 - **alterar_nome_armadilha()** 
-Esta função pergunta ao utilizador o nome atual da armadilha que pretende alterar e o novo nome da armadilha usando o input. Depois é usado *SQL UPDATE* usando cursor.execute para alterar o nome da armadilha no banco de dados. A cláusula *WHERE* garante que apenas a entrada corresponde é alterada. A alteração é confirmada usando conn.commit() para guardar as alterações no banco de dados.
+Esta função pergunta ao utilizador o nome atual da armadilha que pretende alterar e o novo nome da armadilha usando o input. Depois é usado a instrução *SQL UPDATE* usando cursor.execute para alterar o nome da armadilha no banco de dados. A cláusula *WHERE* garante que apenas a entrada corresponde é alterada. A alteração é confirmada usando conn.commit() para guardar as alterações no banco de dados.
 Por fim, a função mostra uma mensagem indicando que o nome da armadilha foi alterado com sucesso.
 
 - **apagar_armadilha()** 
@@ -58,15 +58,16 @@ A função pergunta ao utilizador o nome da armadilha que pretende apagar usando
 A alteração é confirmada usando *conn.commit()* para salvar as alterações no banco de dados.
 Por fim, a função mostra uma mensagem indicando que a armadilha foi apagada com sucesso.
 
-- **avaliar_risco_presenca_mosca()** Avalia o risco de presença da mosca da azeitona em todas as armadilhas registradas.
-Classifica o risco como "alta", "moderada" ou "baixa" com base na contagem simulada de moscas.
-
+- **avaliar_risco_presenca_mosca()** 
 A função executa uma consulta SQL para obter informações sobre todas as armadilhas no banco de dados.
-Se não houver armadilhas registradas, a função mostra uma mensagem indicando que nenhuma armadilha está registada, caso contrário a função mostra para cada uma das armadilhas, obtém a contagem de moscas usando a função ler_sensor_mosca.
-Com base na contagem de moscas, a função imprime mensagens indicando o nível de risco de presença da mosca da azeitona em cada armadilha. Os critérios de avaliação de risco são definidos no código.
+Se não houver armadilhas registradas, a função mostra uma mensagem indicando que nenhuma armadilha está registada, caso contrário a função mostra para cada uma das armadilhas a contagem de moscas usando a função ler_sensor_mosca.
+Com base na contagem de moscas, a função imprime mensagens indicando o nível de risco de presença da mosca da azeitona em cada armadilha. A classificação do está defenida como maior ou igual a 4 o risco é alto, no intervalo entre 2 e 4 o risco é moderado, menor que que 2 o risco é baixo.
 
 
+**Melhorias futuras**
 
-
-
-
+- Configurar a aplicação para armazenar os dados simulados na base de dados.
+- Configurar a função avaliar_risco_presença_mosca para recuperar informações da base de dados e, com base nessas informações, realizar a avaliação de risco.
+- Substituir os dados simulados por dados reais.
+- Desenvolver a capacidade de obter dados de uma estação meteorológica e de uma armadilha inteligente.
+- Criar uma aplicação completa, incluindo um front-end desenvolvido para a interação do usuário.
