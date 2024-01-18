@@ -64,7 +64,7 @@ Se não houver armadilhas registradas, a função mostra uma mensagem indicando 
 Com base na contagem de moscas, a função imprime mensagens indicando o nível de risco de presença da mosca da azeitona em cada armadilha. A classificação do está defenida como maior ou igual a 4 o risco é alto, no intervalo entre 2 e 4 o risco é moderado, menor que que 2 o risco é baixo.
 
 
-**Melhorias futuras**
+# Melhorias futuras
 
 - Configurar a aplicação para armazenar os dados simulados na base de dados.
 - Configurar a função avaliar_risco_presença_mosca para recuperar informações da base de dados e, com base nessas informações, realizar a avaliação de risco.
