@@ -6,9 +6,9 @@
 
 # Funcionalidades da aplicação 
 
-- Na "opção 1" (Número de moscas por armadilha) permite adicionar mais armadilhas, e adicionamos um nome á armadilha juntamente com as coordenadas geográficas (latitude e longitude).
+- Na "opção 1" (Adicionar armadilha) permite adicionar mais armadilhas, e adicionamos um nome á armadilha juntamente com as coordenadas geográficas (latitude e longitude).
 
-- Na "opção 2" (Adicionar armadilha) permite ver o número de de moscas existente em cada armadilha com as coordenadas, e tambem as condições ambientais de quando foi feito esse registo, nomeadamente a temperatura e humidade.
+- Na "opção 2" (Número de moscas por armadilha) permite ver o número de de moscas existente em cada armadilha com as coordenadas, e tambem as condições ambientais de quando foi feito esse registo, nomeadamente a temperatura e humidade.
 
 - Na "opção 3" (Risco de presença da mosca da azeitona) permite saber o nivel de risco de presença da mosca da azeitona nas diferentes armadilhas, classificando o risco como "alta", "moderada" e "baixa".
 
